@@ -18,7 +18,8 @@ require('./services/passport');
 // Connect to mlab database
 mongoose.connect(
 	keys.mongoURI,
-	{ useNewUrlParser: true }
+	{ useNewUrlParser: true, useUnifiedTopology: true },
+	
 );
 
 // Create express app
