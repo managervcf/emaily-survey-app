@@ -10,10 +10,10 @@ import App from './components/App';
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
-	document.querySelector('#root')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.querySelector('#root')
 );
 
 console.log('Stripe key:', process.env.REACT_APP_STRIPE_KEY);

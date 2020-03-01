@@ -16,22 +16,21 @@ require('./models/user');
 require('./services/passport');
 
 // Connect to mlab database
-mongoose.connect(
-	keys.mongoURI,
-	{ useNewUrlParser: true, useUnifiedTopology: true },
-	
-);
+mongoose.connect(keys.mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 // Create express app
 const app = express();
 
 // Application middleware
 app.use(
-	cookieSession({
-		// Cookie expiry in ms
-		maxAge: 30 * 23 * 60 * 60 * 1000,
-		keys: [keys.cookieKey]
-	})
+  cookieSession({
+    // Cookie expiry in ms
+    maxAge: 30 * 23 * 60 * 60 * 1000,
+    keys: [keys.cookieKey]
+  })
 );
 
 app.use(passport.initialize());
@@ -44,11 +43,11 @@ require('./routes/billingRoutes')(app);
 
 // Handle unrecognized routes and assets in production
 if (isInProduction) {
-	app.use(express.static('client/build'));
-	const path = require('path');
-	app.get('*', (req, res) =>
-		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-	);
+  app.use(express.static('client/build'));
+  const path = require('path');
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  );
 }
 
 // Start the server
