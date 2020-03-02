@@ -7,9 +7,6 @@ const keys = require('./config/keys');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-// Are we in production check
-const isInProduction = process.env.NODE_ENV === 'production';
-
 // Loading models
 require('./models/user');
 
@@ -42,8 +39,8 @@ app.use(bodyParser.json());
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 
-// Handle unrecognized routes and assets in production
-if (isInProduction) {
+// In production, first serve static assets and then send index.html on any other route
+if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
   app.get('*', (req, res) =>
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
