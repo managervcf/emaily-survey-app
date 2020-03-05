@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 // Loading models
+require('./models/survey');
 require('./models/user');
 
 // Passport configuration
@@ -38,6 +39,7 @@ app.use(bodyParser.json());
 // Require authRoutes and execute with express app as an argument
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 // In production, first serve static assets and then send index.html on any other route
 if (process.env.NODE_ENV === 'production') {
