@@ -1,3 +1,5 @@
+const { redirectDomain } = require('../../config/keys');
+
 module.exports = question => /*html*/ `
   <html>
     <body>
@@ -6,10 +8,10 @@ module.exports = question => /*html*/ `
         <p>Please answer the following question:</p>
         <p>${question}</p>
         <div>
-          <a href="http://localhost:3000">Yes</a>
+          <a href="${redirectDomain}">Yes</a>
         </div>
         <div>
-          <a href="http://localhost:3000">No</a>
+          <a href="${redirectDomain}">No</a>
         </div>
       </div>
     </body>

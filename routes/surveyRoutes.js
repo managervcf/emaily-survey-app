@@ -11,6 +11,7 @@ module.exports = app => {
   app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
     const { title, subject, body, recipients } = req.body;
 
+    // Build a survey object
     const survey = {
       title,
       subject,
@@ -20,15 +21,18 @@ module.exports = app => {
       dateSent: Date.now()
     };
 
+    // Create new survey based on Survey model
+    let newSurvey = await Survey.create(survey);
+
     // Create new mailer instance
-    const newMailer = new Mailer(survey, surveyTemplate(survey.body));
+    const newMailer = new Mailer(newSurvey, surveyTemplate(newSurvey.body));
 
     try {
       // Send an email
       await newMailer.send();
 
       // Save user to the databse
-      await survey.save();
+      await newSurvey.save();
 
       // Subtract a credit from a user
       req.user.credits -= 1;
@@ -39,6 +43,7 @@ module.exports = app => {
       // Send back user to client side
       res.send(user);
     } catch (error) {
+      console.log(error);
       res.status(422).send(error);
     }
   });
