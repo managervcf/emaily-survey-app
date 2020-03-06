@@ -8,6 +8,10 @@ const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 const Survey = model('Survey');
 
 module.exports = app => {
+  // Route that end user is send back to after providing feedback
+  app.get('/api/surveys/thanks', (req, res) => res.send('Thanks for voting!'));
+
+  // Route handling creating new survey
   app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
     const { title, subject, body, recipients } = req.body;
 
