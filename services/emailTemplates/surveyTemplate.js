@@ -8,10 +8,10 @@ module.exports = question => /*html*/ `
         <p>Please answer the following question:</p>
         <p>${question}</p>
         <div>
-          <a href="${redirectDomain}">Yes</a>
+          <a href="${redirectDomain}/api/surveys/thanks">Yes</a>
         </div>
         <div>
-          <a href="${redirectDomain}">No</a>
+          <a href="${redirectDomain}/api/surveys/thanks">No</a>
         </div>
       </div>
     </body>
