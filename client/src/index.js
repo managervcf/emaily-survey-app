@@ -7,6 +7,11 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import App from './components/App';
 
+// Test code
+import axios from 'axios';
+window.axios = axios;
+// End of test code
+
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
