@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
+import { reduxForm } from 'redux-form';
+
 import SurveyForm from './SurveyForm';
 import SurveyFormReview from './SurveyFormReview';
 
 const SurveyNew = () => {
-  const [isReview, setIsReview] = useState(false);
+  const [showReview, setShowReview] = useState(false);
 
-  return isReview ? <SurveyFormReview /> : <SurveyForm />;
+  return showReview ? (
+    <SurveyFormReview setShowReview={setShowReview} />
+  ) : (
+    <SurveyForm setShowReview={setShowReview} />
+  );
 };
 
-export default SurveyNew;
+export default reduxForm({
+  form: 'surveyForm'
+})(SurveyNew);

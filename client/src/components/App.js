@@ -8,8 +8,12 @@ import SurveyNew from './Survey/SurveyNew';
 import * as actions from '../actions';
 
 const App = ({ fetchUser }) => {
-  // Get user
-  useEffect(fetchUser);
+  // Get user data
+  useEffect(() => {
+    // Create an async funciton that is called immidiately 
+    let fetchData = async () => await fetchUser();
+    fetchData();
+  });
 
   return (
     <div className="container">
