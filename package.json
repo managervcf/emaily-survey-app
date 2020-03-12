@@ -25,6 +25,7 @@
     "mongoose": "^5.8.5",
     "passport": "^0.4.0",
     "passport-google-oauth": "^2.0.0",
+    "path-parser": "^6.1.0",
     "stripe": "^8.24.0"
   }
 }
