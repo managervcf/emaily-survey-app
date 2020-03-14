@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import * as actions from '../../actions';
-import formFields from './fromFields';
+import formFields from './formFields';
 
 const SurveyFormReview = ({ setShowReview, formValues, submitSurvey }) => {
   // Access history object

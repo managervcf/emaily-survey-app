@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import SurveyField from './SurveyField';
 
 import validateEmails from '../../utils/validateEmails';
-import formFields from './fromFields';
+import formFields from './formFields';
 
 const SurveyForm = ({ handleSubmit, setShowReview }) => {
   // Generate fields

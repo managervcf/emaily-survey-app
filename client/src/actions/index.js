@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER } from '../constants';
+import { FETCH_USER, FETCH_SURVEYS } from '../constants';
 
 export const fetchUser = () => async dispatch =>
   dispatch({
@@ -21,3 +21,9 @@ export const submitSurvey = (values, history) => async dispatch => {
   // Redirect to dashboard
   history.push('/surveys');
 };
+
+export const fetchSurveys = () => async dispatch =>
+  dispatch({
+    type: FETCH_SURVEYS,
+    payload: (await axios.get('/api/surveys')).data
+  });

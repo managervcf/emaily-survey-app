@@ -10,7 +10,7 @@ import * as actions from '../actions';
 const App = ({ fetchUser }) => {
   // Get user data
   useEffect(() => {
-    // Create an async funciton that is called immidiately 
+    // Create an async funciton that is called immidiately
     let fetchData = async () => await fetchUser();
     fetchData();
   });
