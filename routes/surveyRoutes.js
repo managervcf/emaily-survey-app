@@ -10,6 +10,21 @@ const Mailer = require('../services/mailer');
 const Survey = model('Survey');
 
 module.exports = app => {
+  // Route sending all surveys belonging to current user
+  app.get('/api/surveys', requireLogin, async (req, res) => {
+    try {
+      let surveys = await Survey.find({ user: req.user.id }).select({
+        // Tell MongoDB not to exclude recipients property
+        recipients: false
+      });
+      console.log('\n\nList of fetched surveys\n\n', surveys);
+      res.send(surveys);
+    } catch (error) {
+      console.log(error);
+      res.status(422).send(error);
+    }
+  });
+
   // Route that end user is send back to after providing feedback
   app.get('/api/surveys/:surveyId/:choice', (req, res) =>
     res.send('Thanks for voting!')
