@@ -1,6 +1,10 @@
+// Import mongoose helper functions
 const { Schema, model } = require('mongoose');
+
+// Import subdocument schema
 const recipientSchema = require('./recipient');
 
+// Define schema
 const surveySchema = new Schema({
   title: String,
   body: String,
@@ -13,4 +17,5 @@ const surveySchema = new Schema({
   lastResponded: Date
 });
 
+// Create model
 model('Survey', surveySchema);

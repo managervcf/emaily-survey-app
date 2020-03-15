@@ -1,5 +1,7 @@
+// Import mongoose helper functions
 const { Schema, model } = require('mongoose');
 
+// Define schema
 const userSchema = new Schema({
   googleId: String,
   credits: {
@@ -8,4 +10,5 @@ const userSchema = new Schema({
   }
 });
 
+// Create model
 model('User', userSchema);

@@ -1,5 +1,7 @@
+// Import statement
 const passport = require('passport');
 
+// Export a function that will be invoked with an app object
 module.exports = app => {
   app.get(
     '/auth/google',

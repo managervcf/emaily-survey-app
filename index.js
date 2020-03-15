@@ -7,7 +7,7 @@ const keys = require('./config/keys');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-// Loading models
+// Load models
 require('./models/survey');
 require('./models/user');
 
@@ -23,7 +23,7 @@ mongoose.connect(keys.mongoURI, {
 // Create express app
 const app = express();
 
-// Application middleware
+// Use middleware
 app.use(
   cookieSession({
     // Cookie expiry in ms
@@ -36,7 +36,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json());
 
-// Require authRoutes and execute with express app as an argument
+// Require routes and execute with express app as an argument
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 require('./routes/surveyRoutes')(app);

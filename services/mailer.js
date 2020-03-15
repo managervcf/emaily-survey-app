@@ -1,6 +1,10 @@
+// Import statements
 const sgMail = require('@sendgrid/mail');
+
+// Import sendgrid key
 const { sendgridKey } = require('../config/keys');
 
+// Define Mailer class with send() method
 class Mailer {
   constructor({ subject, recipients }, content) {
     sgMail.setApiKey(sendgridKey);
@@ -19,4 +23,5 @@ class Mailer {
   }
 }
 
+// Export Mailer class
 module.exports = Mailer;

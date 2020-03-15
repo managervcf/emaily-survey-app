@@ -1,5 +1,7 @@
+// Import key
 const { redirectDomain } = require('../../config/keys');
 
+// Export a function that when called with a survey object returns an email body
 module.exports = ({ body, id }) => /*html*/ `
   <html>
     <body>
