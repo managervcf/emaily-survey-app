@@ -1,6 +1,10 @@
+// Import axios to help with http requests
 import axios from 'axios';
+
+// Import constants
 import { FETCH_USER, FETCH_SURVEYS } from '../constants';
 
+// Define and export all action creators
 export const fetchUser = () => async dispatch =>
   dispatch({
     type: FETCH_USER,

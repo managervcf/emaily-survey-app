@@ -1,4 +1,4 @@
-// List of fields
+// List of form fields
 export default [
   { label: 'Survey Title', name: 'title' },
   { label: 'Subject Line', name: 'subject' },

@@ -1,13 +1,18 @@
+// Import statements
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
+// Import materialize css
 import 'materialize-css/dist/css/materialize.min.css';
+
+// Import root reducer and main App component
 import rootReducer from './reducers';
 import App from './components/App';
 
+// Create redux store, apply thunk and redux devtools as middleware
 const store = createStore(
   rootReducer,
   compose(
@@ -17,12 +22,10 @@ const store = createStore(
   )
 );
 
+// Render App wrapper with redux Provider
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
   document.querySelector('#root')
 );
-
-console.log('Stripe key:', process.env.REACT_APP_STRIPE_KEY);
-console.log('Environment is:', process.env.NODE_ENV);

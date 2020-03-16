@@ -1,16 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import Payments from './Payments';
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.renderContent = this.renderContent.bind(this);
-  }
-
-  renderContent() {
-    switch (this.props.auth) {
+const Header = ({ auth }) => {
+  const renderContent = () => {
+    switch (auth) {
       case null:
         return <li>Loading...</li>;
       case false:
@@ -25,33 +21,28 @@ class Header extends Component {
             <Payments />
           </li>,
           <li key="2" style={{ margin: '0 10px' }}>
-            Credits: {this.props.auth.credits}
+            Credits: {auth.credits}
           </li>,
           <li key="3">
             <a href="/api/logout">Logout</a>
           </li>
         ];
     }
-  }
+  };
 
-  render() {
-    return (
-      <nav>
-        <div className="nav-wrapper light-blue darken-1 white-text">
-          <Link
-            to={this.props.auth ? '/surveys' : '/'}
-            className="left brand-logo"
-          >
-            Emaily
-          </Link>
-          <ul id="nav-mobile" className="right">
-            {this.renderContent()}
-          </ul>
-        </div>
-      </nav>
-    );
-  }
-}
+  return (
+    <nav>
+      <div className="nav-wrapper light-blue darken-1 white-text">
+        <Link to={auth ? '/surveys' : '/'} className="left brand-logo">
+          Emaily
+        </Link>
+        <ul id="nav-mobile" className="right">
+          {renderContent()}
+        </ul>
+      </div>
+    </nav>
+  );
+};
 
 const mapStateToProps = ({ auth }) => ({ auth });
 
