@@ -10,8 +10,12 @@ const SurveyItem = ({ survey: { title, body, dateSent, yes, no } }) => (
       </p>
     </div>
     <div className="card-action">
-      <a href="#">No: {no}</a>
-      <a href="#">Yes: {yes}</a>
+      <span>
+        Yes: <strong>{yes}</strong>{' '}
+      </span>
+      <span>
+        No: <strong>{no}</strong>{' '}
+      </span>
     </div>
   </div>
 );
