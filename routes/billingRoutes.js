@@ -18,6 +18,9 @@ module.exports = app => {
       description: '$5 for 5 credits'
     });
 
+    // Print out charge
+    console.log('\n\nStripe chage object\n\n', charge);
+
     // Update user credits
     req.user.credits += 5;
 
